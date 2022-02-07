@@ -22,6 +22,15 @@ public class ArticleService {
         return articleRepository.findArticleById(id);
     }
 
+    public Article saveArticle(Article article) {
+        if (article == null)
+            throw new InvalidDataAccessApiUsageException("Article must not be null");
+        if (findArticleById(article.getArticleId()) != null)
+            throw new InvalidDataAccessApiUsageException("L'id ne doit pas déjà être en base");
+
+        return articleRepository.saveArticle(article);
+    }
+
     public ArticleRepositoryInt getArticleRepository() {
         return articleRepository;
     }
