@@ -1,11 +1,17 @@
 package doremi.domain;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 public class Album {
 
+    @NotNull
     private String title;
 
     private Genre genre;
 
+    @Min(1950) @Max(2022)
     private int year;
 
     public Album(String title, Genre genre, int year) {

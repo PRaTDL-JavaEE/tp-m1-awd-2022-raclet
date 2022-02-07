@@ -1,7 +1,10 @@
 package doremi.domain;
 
+import javax.validation.constraints.NotEmpty;
+
 public class Band {
 
+    @NotEmpty
     private String name;
 
     private boolean active;
