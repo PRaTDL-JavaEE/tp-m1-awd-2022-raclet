@@ -1,9 +1,10 @@
 # TP "AWD" M1 2022 : Do-Ré-Mi
 
-### NOM :
-### Prénom :
+### NOM : RACLET
+### Prénom : Jean-Baptiste
 ### Groupe de TP :
-- [x] 41
+- [ ] 41
 - [ ] 42
 - [ ] 51
 - [ ] 52
+- [x] Boloss Forever
