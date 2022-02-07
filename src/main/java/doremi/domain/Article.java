@@ -1,9 +1,16 @@
 package doremi.domain;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.Size;
+
 public class Article {
 
+    @PositiveOrZero
     private int articleId;
 
+    @NotNull
+    @Size(min = 1, max = 64)
     private String title;
 
     private String category;
@@ -40,4 +47,7 @@ public class Article {
         this.category = category;
     }
 
+    public boolean equals(Object obj) {
+        return (obj instanceof Article) && (articleId == ((Article) obj).getArticleId());
+    }
 }
