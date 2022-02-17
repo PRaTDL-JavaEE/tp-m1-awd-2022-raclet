@@ -1,8 +1,15 @@
 package doremi.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 
+@Entity
 public class Band {
+
+    @Id @GeneratedValue
+    private Long id;
 
     @NotEmpty
     private String name;
@@ -12,6 +19,12 @@ public class Band {
     public Band(String name, boolean active) {
         this.setName(name);
         this.setActive(active);
+    }
+
+    public Band() { }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {

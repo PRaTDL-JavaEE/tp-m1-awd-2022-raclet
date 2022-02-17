@@ -1,10 +1,17 @@
 package doremi.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+@Entity
 public class Album {
+
+    @Id @GeneratedValue
+    private Long id;
 
     @NotNull
     private String title;
@@ -19,6 +26,8 @@ public class Album {
         this.setGenre(genre);
         this.setYear(year);
     }
+
+    public Album() { }
 
     public String getTitle() {
         return title;
@@ -42,5 +51,9 @@ public class Album {
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
