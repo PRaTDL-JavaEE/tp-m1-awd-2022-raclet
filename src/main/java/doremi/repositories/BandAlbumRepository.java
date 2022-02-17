@@ -3,6 +3,7 @@ package doremi.repositories;
 import doremi.domain.Album;
 import doremi.domain.Band;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -13,12 +14,19 @@ public class BandAlbumRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public void save(Album album) {
-        entityManager.persist(album);
+    @Transactional
+    public Album save(Album album) {
+        Band savedBand = this.save(album.getBand());
+        album.setBand(savedBand);
+        Album savedAlbum = entityManager.merge(album);
+        savedBand.addAlbum(savedAlbum);
+
+        return savedAlbum;
     }
 
-    public void save(Band band) {
-        entityManager.persist(band);
+    @Transactional
+    public Band save(Band band) {
+        return entityManager.merge(band);
     }
 
     public Album findAlbumById(Long id) {
