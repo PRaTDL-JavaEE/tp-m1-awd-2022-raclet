@@ -3,6 +3,7 @@ package doremi.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -20,6 +21,9 @@ public class Album {
 
     @Min(1950) @Max(2022)
     private int year;
+
+    @ManyToOne
+    private Band band;
 
     public Album(String title, Genre genre, int year) {
         this.setTitle(title);
@@ -55,5 +59,13 @@ public class Album {
 
     public Long getId() {
         return id;
+    }
+
+    public Band getBand() {
+        return band;
+    }
+
+    public void setBand(Band band) {
+        this.band = band;
     }
 }
