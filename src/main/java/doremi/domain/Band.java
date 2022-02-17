@@ -1,9 +1,6 @@
 package doremi.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,7 +16,7 @@ public class Band {
 
     private boolean active;
 
-    @OneToMany(mappedBy = "band")
+    @OneToMany(mappedBy = "band", fetch = FetchType.EAGER)
     private Collection<Album> albums = new ArrayList<>();
 
     public Band(String name, boolean active) {
