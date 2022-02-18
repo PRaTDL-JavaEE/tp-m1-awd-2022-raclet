@@ -34,6 +34,10 @@ public class BandAlbumService {
         return bandAlbumRepository.findAllBand();
     }
 
+    public List<Band> findAllActiveBands(boolean active) {
+        return bandAlbumRepository.findAllActiveBands(active);
+    }
+
     public void deleteBandById(Long id) {
         bandAlbumRepository.deleteBandById(id);
     }

@@ -49,6 +49,12 @@ public class BandAlbumRepository {
         return query.getResultList();
     }
 
+    public List<Band> findAllActiveBands(boolean active) {
+        TypedQuery<Band> query = entityManager.createQuery("select b from Band b where b.active=:active order by b.name", Band.class);
+        query.setParameter("active", active);
+        return query.getResultList();
+    }
+
     public EntityManager getEntityManager() {
         return entityManager;
     }
