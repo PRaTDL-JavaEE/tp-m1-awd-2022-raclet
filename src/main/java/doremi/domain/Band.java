@@ -1,5 +1,7 @@
 package doremi.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
@@ -16,7 +18,7 @@ public class Band {
 
     private boolean active;
 
-    @OneToMany(mappedBy = "band", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "band", fetch = FetchType.EAGER) @JsonIgnore
     private Collection<Album> albums = new ArrayList<>();
 
     public Band(String name, boolean active) {
