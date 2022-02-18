@@ -31,6 +31,11 @@ public class BandAlbumRepository {
         return entityManager.merge(band);
     }
 
+    @Transactional
+    public void deleteBandById(Long id) {
+        entityManager.remove(findBandById(id));
+    }
+
     public Album findAlbumById(Long id) {
         return entityManager.find(Album.class, id);
     }
